@@ -1,7 +1,13 @@
 cmake_minimum_required(VERSION 3.5)
 project(astra_camera)
-if(NOT WIN32)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wextra")
+
+# Default to C++14
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+endif()
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra)
 endif()
 
 find_package(ament_cmake REQUIRED)
@@ -74,7 +80,13 @@ target_link_libraries(astra_camera_node astra_driver_lib)
 add_dependencies(astra_camera_node astra_openni2)
 
 install(TARGETS astra_camera_node
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/bin/
+  DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+)
+
+install(TARGETS astra_wrapper astra_driver_lib
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+  LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+  RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
 )
 
 install(TARGETS astra_wrapper astra_driver_lib
@@ -82,15 +94,15 @@ install(TARGETS astra_wrapper astra_driver_lib
 )
 
 install(FILES ${CMAKE_BINARY_DIR}/openni2/Redist/libOpenNI2Orbbec.so
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/
+  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
 )
 
 install(DIRECTORY ${CMAKE_BINARY_DIR}/openni2/Redist/OpenNI2
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/
+  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
 )
 
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME}/
+install(DIRECTORY include/${PROJECT_NAME}
+  DESTINATION ${CMAKE_INSTALL_PREFIX}/include/
 )
 
 ament_export_include_directories(include)
