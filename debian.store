@@ -1,1 +1,1 @@
-{"parent": "debian/r2b2/astra_camera", "base": "5dc85b2", "trimbase": "", "previous": "036e13e", "trim": ""}
+{"parent": "debian/r2b2/astra_camera", "previous": "fbcff83", "trim": "", "trimbase": "", "base": "a685bb6"}
