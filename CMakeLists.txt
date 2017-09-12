@@ -84,25 +84,29 @@ install(TARGETS astra_camera_node
 )
 
 install(TARGETS astra_wrapper astra_driver_lib
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-  LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-  RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
-)
-
-install(TARGETS astra_wrapper astra_driver_lib
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
 )
 
 install(FILES ${CMAKE_BINARY_DIR}/openni2/Redist/libOpenNI2Orbbec.so
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+  DESTINATION lib
 )
 
 install(DIRECTORY ${CMAKE_BINARY_DIR}/openni2/Redist/OpenNI2
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+  DESTINATION lib
 )
 
 install(DIRECTORY include/${PROJECT_NAME}
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/include/
+  DESTINATION include
+)
+
+install(FILES 56-orbbec-usb.rules
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(PROGRAMS scripts/create_udev_rules
+  DESTINATION lib/${PROJECT_NAME}
 )
 
 ament_export_include_directories(include)
