@@ -1,0 +1,12 @@
+Source: ros-ardent-astra-camera
+Section: misc
+Priority: extra
+Maintainer: Tim Liu <liuhua@orbbec.com>
+Build-Depends: debhelper (>= 9.0.0), git-core, libboost-all-dev, libudev-dev, libusb-1.0-0-dev, ros-ardent-ament-cmake, ros-ardent-builtin-interfaces, ros-ardent-rclcpp, ros-ardent-sensor-msgs, ros-ardent-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-ardent-astra-camera
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libboost-all-dev, libudev-dev, libusb-1.0-0-dev, ros-ardent-builtin-interfaces, ros-ardent-rclcpp, ros-ardent-sensor-msgs, ros-ardent-ros-workspace
+Description: Drivers for Orbbec Astra Devices.
