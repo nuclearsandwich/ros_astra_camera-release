@@ -1,0 +1,12 @@
+Source: ros-bouncy-astra-camera
+Section: misc
+Priority: extra
+Maintainer: Chris Lalancette <clalancette@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), git, libboost-all-dev, libudev-dev, libusb-1.0-0-dev, ros-bouncy-ament-cmake, ros-bouncy-builtin-interfaces, ros-bouncy-rclcpp, ros-bouncy-sensor-msgs, ros-bouncy-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-bouncy-astra-camera
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libboost-all-dev, libudev-dev, libusb-1.0-0-dev, ros-bouncy-builtin-interfaces, ros-bouncy-rclcpp, ros-bouncy-sensor-msgs, ros-bouncy-ros-workspace
+Description: Drivers for Orbbec Astra Devices.
